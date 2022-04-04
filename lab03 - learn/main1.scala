@@ -3,14 +3,11 @@ object main1 {
     println(sumfrac(1e-3))
   }
   def sumfrac(stop : Double) : Double = {
-    return getValue(1, stop, 1)
-  }
-
-  def getValue(nextValue : Double, stop : Double, counter : Int): Double = {
-    if(nextValue < stop){
-      return 0
-    } else {
-      return nextValue + getValue(1 / Math.pow(2,counter), stop, counter + 1)
+    @scala.annotation.tailrec
+    def getValue(nextValue: Double, sum: Double, n: Int) : Double = {
+      if(nextValue < stop) return sum
+      else getValue(1/Math.pow(2, n), sum + nextValue, n + 1)
     }
+    return getValue(1, 0, 1)
   }
 }
