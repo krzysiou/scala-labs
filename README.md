@@ -1,1 +1,3 @@
-# scala-labs
+# scala
+
+Course at my university.
